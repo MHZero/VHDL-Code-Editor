@@ -4,13 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VHDL Text Editor</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .editor-container {
+            text-align: left;
+            position: relative;
+        }
+
+        .editor {
+            width: 50vw;
+            max-width: 800px;
+            height: 90vh;
+            margin: 0;
+            position: absolute;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 20px;
+        }
+
+        /* Updated styles for the popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; /* Adjust the width as needed */
+            padding: 20px;
+            background-color: #fefefe;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            text-align: left; /* Adjusted text alignment */
+        }
+
+        .popup-content {
+            position: relative; /* Added relative positioning */
+            padding-right: 30px; /* Adjusted right padding to accommodate close button */
+        }
+
+
+        button {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="popup" class="popup">
-        <!-- Removed the close button -->
-        <p id="popup-message"></p>
+        <div class="popup-content">
+            <button class="close-button" onclick="closePopup()" style="position: fixed; bottom: 60.75%; left: 91.5%;">X</button>
+            <p id="popup-message"></p>
+        </div>
+    </div>    
+    
+
+    <div class="editor-container">
+        <div class="editor">
+            <textarea id="vhdl-code" placeholder="Enter VHDL code here..."></textarea>
+        </div>
     </div>
+
+    <button onclick="checkSyntax()">Check Syntax</button>
 
     <script src="script.js"></script>
 </body>
